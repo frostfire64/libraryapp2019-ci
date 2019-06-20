@@ -1,0 +1,15 @@
+{
+    "name": "frostfire64/library2019",
+    "description": "Example app to show off my codeigniter skills",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bartosz Olender",
+            "email": "bartosz@olender.xyz"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}
