@@ -18,17 +18,9 @@ class MY_Controller extends CI_Controller {
 	public function render($template, $data = [], $return = false)
 	{
 		$this->load->library('Functions_Twig_Extension');
-		$loader = new FilesystemLoader(VIEWPATH);
-		$twig = new Environment($loader, [
-			'cache' => false,
-			'autoescape' => false,
-//			'cache' => APPPATH.'/cache',
-		]);
-		// lets add all defined functions to twig template language
+		$this->load->library('Twig');
 
-		$twig->addExtension(new Functions_Twig_Extension(get_defined_functions()));
-
-//		$twig->display($template.'.twig'); die;
+		$this->twig->addExtension(new Functions_Twig_Extension(get_defined_functions()));
 
 		$append_data = [
 			'title' => $this->title,
@@ -36,10 +28,10 @@ class MY_Controller extends CI_Controller {
 		];
 
 		if (!$return) {
-			return $this->output->set_output($twig->render($template.'.twig', $data));
+			return $this->output->set_output($this->twig->render($template.'.twig', $data));
 		}
 
-		return $twig->render($template.'.twig', $data);
+		return $this->twig->render($template.'.twig', $data);
 	}
 }
 
